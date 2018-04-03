@@ -2,11 +2,11 @@
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/dbname-dev'
+    connection: 'postgres://localhost/minirack-dev'
   },
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/dbname-test'
+    connection: 'postgres://localhost/minirack-test'
   },
   production: {
     client: 'pg',
