@@ -2,6 +2,17 @@ const express = require('express')
 const router = express.Router()
 const knex = require('../knex')
 
+// --- FOR TEMPLATES BELOW
+
+// the page for making a new minidisc
+router.get('/new', (req, res, next) => {
+  res.render('minidiscs', {})
+})
+
+
+
+// --- FOR API/AJAX USAGE
+
 // READ ALL records for this table
 router.get('/', (req, res, next) => {
   knex('minidiscs')
@@ -36,9 +47,8 @@ router.post('/', (req, res, next) => {
       "cover_url": req.body.cover_url
     })
     .returning('*')
-    .first()
     .then((data) => {
-      res.json(data)
+      res.json(data[0])
     })
     .catch((err) => {
       next(err)
@@ -91,5 +101,8 @@ router.delete('/:id', function(req, res, next) {
       next(err)
     })
 })
+
+
+
 
 module.exports = router
